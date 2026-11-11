@@ -1,7 +1,7 @@
 /* ===== EDITE AQUI: contatos, trabalhos, preços e extras do site.
    Salve o arquivo e o site já usa os novos dados. ===== */
 export const CFG = {
-  nome: "Story & Vídeo Maker",
+  nome: "LGS Software",
   whats: "5518998029192", // DDI + DDD + número, só dígitos
   email: "contato@seusite.com",
   insta: "https://www.instagram.com/anne_sa21/",
