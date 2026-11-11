@@ -22,8 +22,10 @@ export default function Works({ works }) {
               key={w.id}
               className={`work${w.w ? " wide" : ""}${f !== "all" && w.k !== f ? " hide" : ""}`}
               href={w.u}
+              {...(w.u && w.u !== "#" ? { target: "_blank", rel: "noopener noreferrer" } : {})}
               style={{ "--g": w.g }}
             >
+              {w.v && <video className="bg" src={w.v} autoPlay muted loop playsInline preload="metadata" />}
               <span className="pl"></span>
               <div>
                 <h3>{w.t}</h3>

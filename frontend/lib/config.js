@@ -7,14 +7,14 @@ export const CFG = {
   insta: "https://www.instagram.com/anne_sa21/",
 };
 
-// k: "story" ou "video" (usado no filtro) · u: link do projeto · w: card largo
+// k: "story" ou "video" (usado no filtro) · u: link do projeto · v: vídeo de fundo do card (opcional) · w: card largo
 export const WORKS = [
-  { t: "Lançamento de coleção", c: "Stories · moda", k: "story", g: "linear-gradient(135deg,#F35E96,#36106A)", u: "#" },
-  { t: "Dia na cozinha", c: "Vídeo institucional · gastronomia", k: "video", g: "linear-gradient(160deg,#FFBE16,#FF711F)", u: "#", w: true },
-  { t: "Bastidores do evento", c: "Stories · cobertura", k: "story", g: "linear-gradient(120deg,#21A7AA,#36106A)", u: "#" },
-  { t: "Marca em primeira pessoa", c: "Reels · personal brand", k: "video", g: "linear-gradient(150deg,#FF711F,#F35E96)", u: "#" },
-  { t: "Aftermovie", c: "Vídeo · festival", k: "video", g: "linear-gradient(135deg,#FFBE16,#F35E96)", u: "#", w: true },
-  { t: "Série de depoimentos", c: "Stories · clientes", k: "story", g: "linear-gradient(170deg,#21A7AA,#FFBE16)", u: "#" },
+  { t: "Lançamento de coleção", c: "Stories · moda", k: "story", g: "linear-gradient(135deg,#F35E96,#36106A)", u: "/videos/carro.mp4", v: "/videos/carro.mp4" },
+  { t: "Dia na cozinha", c: "Vídeo institucional · gastronomia", k: "video", g: "linear-gradient(160deg,#FFBE16,#FF711F)", u: "#", v: "#", w: true },
+  { t: "Bastidores do evento", c: "Stories · cobertura", k: "story", g: "linear-gradient(120deg,#21A7AA,#36106A)", u: "#", v: "#" },
+  { t: "Marca em primeira pessoa", c: "Reels · personal brand", k: "video", g: "linear-gradient(150deg,#FF711F,#F35E96)", u: "#", v: "#" },
+  { t: "Aftermovie", c: "Vídeo · festival", k: "video", g: "linear-gradient(135deg,#FFBE16,#F35E96)", u: "#", v: "#", w: true },
+  { t: "Série de depoimentos", c: "Stories · clientes", k: "story", g: "linear-gradient(170deg,#21A7AA,#FFBE16)", u: "#", v: "#" },
 ];
 
 // Serviços e pacotes: [rótulo, preço em R$]
