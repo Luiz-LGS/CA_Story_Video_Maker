@@ -36,3 +36,20 @@ export const EX = [
 export const brl = (n) =>
   "R$ " + Number(n).toLocaleString("pt-BR", { minimumFractionDigits: Number.isInteger(+n) ? 0 : 2, maximumFractionDigits: 2 });
 export const wa = (whats, text) => `https://wa.me/${whats}?text=${encodeURIComponent(text)}`;
+
+// E-mail no formato nome@dominio.ext
+export const isEmail = (v) => /^[^\s@]+@[^\s@.]+(\.[^\s@.]+)+$/.test(v.trim());
+
+// Celular/telefone BR: DDD + número (10 ou 11 dígitos), com ou sem +55, aceita espaços, traços e parênteses
+export function isPhone(v) {
+  if (!/^[\d\s()+.-]+$/.test(v.trim())) return false;
+  let d = v.replace(/\D/g, "");
+  if ((d.length === 12 || d.length === 13) && d.startsWith("55")) d = d.slice(2);
+  if (d.length !== 10 && d.length !== 11) return false;
+  if (!/^[1-9]{2}/.test(d)) return false; // DDD válido (11 a 99)
+  if (d.length === 11 && d[2] !== "9") return false; // celular começa com 9
+  if (/^(\d)\1+$/.test(d.slice(2))) return false; // evita 99999-9999, 00000-0000...
+  return true;
+}
+
+export const isContato = (v) => isEmail(v) || isPhone(v);

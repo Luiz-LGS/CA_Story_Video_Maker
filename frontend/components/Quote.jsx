@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import { brl, wa } from "../lib/config";
+import { brl, wa, isContato } from "../lib/config";
 
 // servicos: [{ id, n, o: [[rótulo, preço], ...] }] · extras: [{ n, p (R$), m (fração) }]
 export default function Quote({ cfg, servicos, extras }) {
@@ -10,7 +10,7 @@ export default function Quote({ cfg, servicos, extras }) {
   const [pop, setPop] = useState(false);
   const [nome, setNome] = useState("");
   const [contato, setContato] = useState("");
-  const [err, setErr] = useState(false);
+  const [err, setErr] = useState("");
 
   const sv = servicos[si];
   const [sizeLabel, base] = sv.o[i];
@@ -31,8 +31,9 @@ export default function Quote({ cfg, servicos, extras }) {
 
   // confere nome e contato e abre o WhatsApp com o pedido pronto
   function aprovar() {
-    if (!nome.trim() || !contato.trim()) { setErr(true); return; }
-    setErr(false);
+    if (nome.trim().length < 2) { setErr("Preencha seu nome."); return; }
+    if (!isContato(contato)) { setErr("Digite um WhatsApp com DDD (ex: 18 99999-9999) ou um e-mail válido."); return; }
+    setErr("");
     const msg = `${link}${encodeURIComponent(`\nMeu nome: ${nome.trim()}\nMeu contato: ${contato.trim()}`)}`;
     window.open(msg, "_blank", "noopener");
   }
@@ -84,7 +85,7 @@ export default function Quote({ cfg, servicos, extras }) {
             <ul>{lines.map((l) => <li key={l}>{l}</li>)}</ul>
             <input aria-label="Seu nome" placeholder="Seu nome" value={nome} onChange={(e) => setNome(e.target.value)} />
             <input aria-label="Seu WhatsApp ou e-mail" placeholder="Seu WhatsApp ou e-mail" value={contato} onChange={(e) => setContato(e.target.value)} />
-            {err && <p className="qerr">Preencha seu nome e contato.</p>}
+            {err && <p className="qerr">{err}</p>}
             <button className="btn y" type="button" onClick={aprovar}>Aprovar no WhatsApp</button>
             <small>Valor fixo para o escopo escolhido. Ajustes fora do pacote eu combino com você antes.</small>
           </aside>

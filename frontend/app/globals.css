@@ -1,12 +1,12 @@
 /* Story & Vídeo Maker — estilos globais. Paleta: violeta #36106A, laranja #FF711F, amarelo #FFBE16, rosa #F35E96, turquesa #21A7AA, areia #FFF4E5 */
 :root{
-  --bg:#FFF4E5;--fg:#36106A;--card:#FFFBF5;--line:#EBD5BF;--muted:#5F4690;
+  --bg:#FFF4E5;--fg:#36106A;--card:#FFFBF5;--line:#EBD5BF;--muted:#5F4690;--err:#C2185B;
   --cobalt:#36106A;--ink:#36106A;--orange:#FF711F;--teal:#21A7AA;--sun:#FFBE16;--pink:#F35E96;--onc:#FFF4E5;
   --display:var(--font-display),"Arial Black",sans-serif;--hand:var(--font-hand),"Comic Sans MS",cursive;--sand:#FFF4E5;--body:var(--font-body),system-ui,sans-serif;
   box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
 }
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1F0A42;--fg:#FFF4E5;--card:#2D1259;--line:#4B2B87;--muted:#CBB8EC;color-scheme:dark}}
-:root[data-theme="dark"]{--bg:#1F0A42;--fg:#FFF4E5;--card:#2D1259;--line:#4B2B87;--muted:#CBB8EC;color-scheme:dark}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1F0A42;--fg:#FFF4E5;--card:#2D1259;--line:#4B2B87;--muted:#CBB8EC;--err:#F35E96;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#1F0A42;--fg:#FFF4E5;--card:#2D1259;--line:#4B2B87;--muted:#CBB8EC;--err:#F35E96;color-scheme:dark}
 *,*::before,*::after{box-sizing:inherit}
 html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
 body{margin:0;background:var(--bg);color:var(--fg);font:400 1.0625rem/1.6 var(--body);overflow-x:hidden}
@@ -161,3 +161,7 @@ input,textarea{border-radius:14px;border-color:var(--fg)}
 
 .total input{width:100%;margin-bottom:.6rem}
 .total .qerr{font-size:.9rem;font-weight:700;margin:0 0 .6rem}
+/* erro de formulário: borda rosa + aviso embaixo do campo */
+input[aria-invalid="true"],textarea[aria-invalid="true"]{border-color:var(--err)}
+.ferr{display:flex;align-items:center;gap:.45rem;font-size:.88rem;font-weight:700;color:var(--err);animation:fade .25s both}
+.ferr::before{content:"!";flex:none;display:grid;place-items:center;width:1.15rem;height:1.15rem;border-radius:50%;background:var(--err);color:#fff;font-size:.75rem;line-height:1}
