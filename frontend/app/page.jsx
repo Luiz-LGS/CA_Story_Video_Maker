@@ -25,7 +25,7 @@ export default function Home() {
       <Quote cfg={CFG} servicos={servicos} extras={EX} />
       <Contact cfg={CFG} />
       <footer>
-        <div className="wrap">© <Ano /> {CFG.nome}.</div>
+        <div className="wrap">© <Ano /> LGS Software.</div>
       </footer>
       <Reveal />
     </>
